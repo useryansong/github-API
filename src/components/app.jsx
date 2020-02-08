@@ -1,28 +1,45 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import Search from './search'
 import Main from './main'
+import './app.css'
 
-import '../../node_modules/bootstrap/dist/css/bootstrap.css'
+const App = () => {
 
+    const [searchName, setSearchName] = useState('');
 
-class App extends Component {
-    state = {
-        searchName:''
+    const onSearch = (searchName) => {
+        setSearchName(searchName)
     }
 
-    setSearchName = (searchName) => {
-        this.setState ({searchName})
-        
-    }
-
-    render() {
-        return (
-            <div>
-                <Search setSearchName={this.setSearchName}/>
-                <Main searchName={this.state.searchName}/>
-
+    return (
+        <div style={styles.outer}>
+            <div style={styles.inner}>
+                <Search
+                    onSearch={onSearch} />
+                <Main
+                    searchName={searchName} />
             </div>
-        )
+        </div>
+    )
+
+}
+
+const styles ={
+    outer: {
+        height: '100vh',
+        backgroundColor: '#EDEDED',
+        display: "flex",
+        justifyContent: 'center'
+    },
+    inner: {
+        width: "60%",
+        height:"80%",
+        overflow: "auto",
+        backgroundColor: '#fff',
+        borderRadius: '12px',
+        marginTop: 40,
+        paddingTop: 20,
     }
 }
+
 export default App
