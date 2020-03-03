@@ -11,6 +11,7 @@ const Search = ({ onSearch}) => {
             <input
                 type='text'
                 value={inputValue}
+                placeholder='Please input username'
                 onChange = {e => {setInputValue(e.target.value)}}
             />
             <button onClick={() =>onSearch(inputValue)}>Submit</button>
